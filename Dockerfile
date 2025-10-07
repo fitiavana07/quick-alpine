@@ -14,3 +14,5 @@ RUN chown -R app:app /home/app
 
 # Switch to user app
 USER app
+
+CMD ["/bin/sh", "-l"]
