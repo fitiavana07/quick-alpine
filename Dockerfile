@@ -6,7 +6,10 @@ FROM alpine:latest
 ARG UID=1000
 ARG GID=1000
 
-RUN addgroup -g $GID app && adduser -D -u $UID -G app -h /home/app app
+RUN apk add --no-cache sudo git
+
+RUN addgroup -g $GID app && adduser -D -u $UID -G app -h /home/app app \
+  && echo "app ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 
 WORKDIR /home/app
 
